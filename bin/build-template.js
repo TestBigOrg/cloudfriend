@@ -3,9 +3,9 @@
 /* eslint-disable no-console */
 
 var cloudfriend = require('..');
-var templatePath = process.argv[2];
-
-cloudfriend.build(templatePath)
+var argv = require('minimist')(process.argv.slice(2));
+var templatePath = argv._[0];
+cloudfriend.build(templatePath, argv)
   .then(function(template) {
     console.log(JSON.stringify(template, null, 4));
   });
